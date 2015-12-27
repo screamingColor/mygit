@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无缝滚动</title>
+	<style>
+*{
+	padding: 0;
+	margin: 0;
+}		
+ #demo{
+	 overflow: hidden;;
+
+	 width: 50%;
+	 height: 72px;
+	 outline: solid 1px #000;
+ }
+ #demo1{//outline: solid 1px #e12;
+	 //background-color: antiquewhite;}
+#demo2{ // outline:slateblue solid 1px
+        }
+	</style>
+</head>
+
+<body>
+<div id="demo">
+	<div id="demo1">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<p>4</p>
+	</div>
+	<div id="demo2"></div>
+
+</div>
+<script>
+
+    <!--向上滚动 -->
+	var speed = 30;//滚动的速度
+	var tab = document.getElementById("demo");
+	var tab1 = document.getElementById("demo1");
+	var tab2 = document.getElementById("demo2");
+	tab2.innerHTML = tab1.innerHTML;
+    function Marquee(){
+		if(tab2.offsetTop - tab.scrollTop == 0 ){//当滚动条到达可见视图框底部的时候
+			//console.log(tab.scrollTop);
+			//console.log(tab1.offsetHeight);建议观察
+			tab.scrollTop = tab1.offsetHeight;//此语句与下一条被注释的语句都是为了将滚动置为最初位置
+			//tab.scrollTop = 0;
+		}
+		else{
+			tab.scrollTop++;//滚动条往下移动
+		}
+	}
+	var MyMar = setInterval(Marquee,speed);
+	tab.onmouseover = function(){ clearInterval(MyMar)};//清除循环
+	tab.onmouseout =  function(){MyMar = setInterval(Marquee,speed)};//恢复循环
+</script>
+</body>
+</html>
