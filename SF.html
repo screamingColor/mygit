@@ -1,0 +1,86 @@
+<!DOCTYPE>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<button style="background-color:#36F; width:100px; height:80;" onClick="shake(this,fadeOut);"></button>
+
+
+
+<script>
+//将e转化为相对定位的元素，使之左右震动
+//第二个参数是回掉函数
+function shake(e,oncomplete,distance,time){
+	
+	if(typeof e === "string") e = document.getElementById(e);
+	if(!time) time = 500;
+	if(!distance) distance = 5;
+	
+	var originalStyle = e.style.cssText;//保存e的原始style
+	e.style.position = "relative";
+	var start = (new Date()).getTime();//动画开始的时间
+	animate();
+	
+	function animate(){
+		var now = (new Date()).getTime();
+		var elapsed = now - start;
+		var fraction = elapsed/time;
+		
+		if(fraction <1){
+			//动画未完成,作为动画完成比例的函数，计算e的x位置
+			//使用正弦函数将完成比例乘以4pi
+			var x = distance * Math.sin(fraction*4*Math.PI);
+			e.style.left = x+"px";
+			//在25毫秒后或者在总时间的最后尝试再次运行函数，目的是为了产生每秒40帧的动画
+			setTimeout(animate,Math.min(25,time - elapsed));
+			}
+			else{
+				e.style.cssText = originalStyle;
+				console.log("11");
+				if(oncomplete) oncomplete(e);
+				}
+		}
+	
+	}
+
+function fadeOut(e,oncomplete,time){
+	console.log("1");
+	if(typeof e === "string")e = document.getElementById(e);
+	if(!time) time = 500;
+	
+	//使用Math.sqrt作为一个简单的“缓动函数”来创建动画
+	//精巧的非线性：一开始淡出的比较快，后缓慢些
+	var ease = Math.sqrt;
+	var start = (new Date()).getTime();
+	animate();
+	function animate(){
+		var now = (new Date()).getTime();
+		var elapsed = now - start;
+		var fraction = elapsed/time;
+		
+		if(fraction <1){
+			var opacity = 1 - ease(fraction);//计算不透明度
+			e.style.opacity = String(opacity);
+			setTimeout(animate,Math.min(25,time - elapsed));
+			}
+			else{
+				e.style.opacity = "0";
+				if(oncomplete) oncomplete(e);
+				}
+		}
+		
+		
+		
+	}
+</script>
+
+</body>
+
+
+
+
+
+
+
+
+
