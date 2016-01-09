@@ -9,7 +9,7 @@
 	margin: 0;
 }		
  #demo{
-	 overflow: hidden;;
+	 overflow: hidden;
 
 	 width: 50%;
 	 height: 72px;
@@ -42,7 +42,7 @@
 	var tab2 = document.getElementById("demo2");
 	tab2.innerHTML = tab1.innerHTML;
     function Marquee(){
-		if(tab2.offsetTop - tab.scrollTop == 0 ){//当滚动条到达可见视图框底部的时候
+		if(tab2.offsetTop - tab.scrollTop <= 0 ){//当滚动条到达可见视图框底部的时候
 			//console.log(tab.scrollTop);
 			//console.log(tab1.offsetHeight);建议观察
 			tab.scrollTop = tab1.offsetHeight;//此语句与下一条被注释的语句都是为了将滚动置为最初位置
