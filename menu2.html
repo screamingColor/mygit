@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+
+    <style>
+        a{
+            text-decoration: none;
+        }
+
+        #pullDownNavigation .navigation{
+            position:relative;
+            float: left;
+            outline:#cc2123 1px solid;
+            width:20%;
+            height:30px;
+            text-align: center;
+
+        }
+        .pullDownNavigationc{
+            position: relative;
+            float: left;
+            top: -1px;
+            overflow: hidden;
+            height: 80px;
+            text-align: center;
+            width: 99%;
+            outline: 1px solid #cc2123;
+            display: none;
+        }
+
+        .navigation .nav {
+            height: 32px;
+            line-height:30px;
+        }
+    </style>
+</head>
+<body>
+<h4>下拉式导航菜单</h4>
+<div id="pullDownNavigation" >
+    <div class="navigation navigation1"data-targetId="pullDownNavigation1">
+        <div class="nav"><a href="#">导航1</a></div>
+        <!-- 导航1菜单-->
+        <div class="pullDownNavigationc" id="pullDownNavigation1">
+            <div><a href="#">下拉菜单1</a></div>
+            <div><a href="#">下拉菜单2</a></div>
+            <div><a href="#">下拉菜单3</a></div>
+            <div><a href="#">下拉菜单4</a></div>
+        </div>
+    </div>
+
+    <div class="navigation navigation1"data-targetId="pullDownNavigation2">
+        <div class="nav"><a href="#">导航2</a></div>
+        <!-- 导航2菜单-->
+        <div class="pullDownNavigationc" id="pullDownNavigation2">
+            <div><a href="#">下拉菜单1</a></div>
+            <div><a href="#">下拉菜单2</a></div>
+            <div><a href="#">下拉菜单3</a></div>
+            <div><a href="#">下拉菜单4</a></div>
+        </div>
+    </div>
+
+    <div class="navigation navigation1"data-targetId="pullDownNavigation3">
+        <div class="nav"><a href="#">导航3</a></div>
+        <!-- 导航3菜单-->
+        <div class="pullDownNavigationc" id="pullDownNavigation3">
+            <div><a href="#">下拉菜单1</a></div>
+            <div><a href="#">下拉菜单2</a></div>
+            <div><a href="#">下拉菜单3</a></div>
+            <div><a href="#">下拉菜单4</a></div>
+        </div>
+    </div>
+
+    <div class="navigation navigation1"data-targetId="pullDownNavigation4">
+        <div class="nav"><a href="#">导航4</a></div>
+        <!-- 导航4菜单-->
+        <div class="pullDownNavigationc" id="pullDownNavigation4">
+            <div><a href="#">下拉菜单1</a></div>
+            <div><a href="#">下拉菜单2</a></div>
+            <div><a href="#">下拉菜单3</a></div>
+            <div><a href="#">下拉菜单4</a></div>
+        </div>
+    </div>
+
+    <div class="navigation navigation1"data-targetId="pullDownNavigation5">
+        <div class="nav"><a href="#">导航5</a></div>
+        <!-- 导航5菜单-->
+        <div class="pullDownNavigationc" id="pullDownNavigation5">
+            <div><a href="#">下拉菜单1</a></div>
+            <div><a href="#">下拉菜单2</a></div>
+            <div><a href="#">下拉菜单3</a></div>
+            <div><a href="#">下拉菜单4</a></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    window.onload = function(){
+        var
+        getTypeElement = function(es,type){//获取指定类型的节点
+            var esLen = es.length,
+                    i = 0,
+                    eArr = [],
+                   esl=null;
+            for(;i<esLen;i++){
+                esl = es[i];
+                if(esl.nodeName.replace("#","").toLocaleLowerCase()==type){
+                    eArr.push(esl);
+                }
+            }
+            return eArr;
+        },
+        //获取所有下拉导航的菜单
+        navs = getTypeElement(document.getElementById("pullDownNavigation").childNodes,"div"),
+                i = 0,
+                l = navs.length,
+                targetID = null;
+        for(;i<l;i++){
+            navs[i].onmousemove = function(){
+                //显示下拉菜单
+                targetID = this.getAttribute("data-targetID");
+                document.getElementById(targetID).style.display = "block";
+            };
+            navs[i].onmouseout = function(){
+                //隐藏下拉菜单
+                document.getElementById(targetID).style.display = "none";
+            };
+        }
+
+    };
+</script>
+</body>
+</html>
