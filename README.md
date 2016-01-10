@@ -1,3 +1,3 @@
 # mygit
-demo for studying
+demo 
 小练习
