@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>滑动门导航</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        #slide{
+            position: relative;
+            left: -72px;
+            display: block;
+            outline: 1px crimson solid;
+            height: 82px;
+            width: 100px;
+            
+        }
+        #slide div{
+            position: relative;
+            float: left;
+            margin-top: 5px;
+            margin-left: 5px;
+
+        }
+        .slideMain div{
+            clear: both;
+        }
+        .slideMain,.slideTab{
+            height: 80px;
+        }
+        .slideTab{
+            line-height: 74px;
+        }
+
+    </style>
+</head>
+<body>
+<h2>滑动门导航</h2>
+<div id="slide">
+    <!-- 菜单主体-->
+    <div class="slideMain" id="slideMain">
+        <div><a href="#"></a>菜单1</div>
+        <div><a href="#"></a>菜单1</div>
+        <div><a href="#"></a>菜单1</div>
+    </div>
+    <!-- 引导卡-->
+    <div class="slideTab" title="显示菜单" id="slideTab">
+        &nbsp;>>
+    </div>
+</div>
+
+<script>
+    window.onload = function(){
+      function slideNavs(slide){
+          var slideId = -1;
+          slide.onmouseover = function(){
+              //打开滑动门
+              //子元素会干扰时间，导致抖动，当再次进入元素时，停止隐藏滑动门的线程
+              clearTimeout(slideId);
+              new animateManage({//播放显示元素的动画
+                  "context":slide,   //被操作的元素
+                  "effect":"linear",
+                  "time":100,     //持续时间
+                  "starCss":{              //元素起始值偏移量
+                      "left":slide.style.left
+                  },
+                  "css":{             //元素结束值偏移量
+                      "left":0
+                  }
+
+              }).init();
+          }
+          slide.onmouseout = function(){  //关闭滑动门
+              slideld = setTimeout(function(){
+
+                  new animateManage({ //播放隐藏元素的动画
+                      "context":slide,
+                      "effect":"linear",
+                      "time":100,
+                      "starCss":{
+                          "left":slide.style.left
+                      },
+                      "css":{ //元素的结束值偏移量
+                          "left":-72
+                        }
+                  }).init();
+              },300)
+
+          }
+      }
+        slideNavs(document.getElementById("slide"));
+    };
+</script>
+</body>
+</html>
