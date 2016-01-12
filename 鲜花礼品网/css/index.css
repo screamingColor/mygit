@@ -1,0 +1,261 @@
+@charset "utf-8";
+/* CSS Document */
+/*filter:alpha(opacity=70); -moz-opacity:0.7; -khtml-opacity:0.7; opacity:0.7;*/
+html,a,p,body,ul,li,ol,h3,dl,dt,dd,span,form,input,div,h4{ margin:0; padding:0; list-style-type:none; text-decoration:none; font-family:"微软雅黑";}
+
+@font-face {font-family: 'iconfont';
+    src: url('../IconFont/iconfont.eot'); /* IE9*/
+    src: url('../IconFont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../IconFont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../IconFont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../IconFont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.nav_box{ position:fixed; top:0; left:0; z-index:10;}
+
+/*ad style*/
+#Top{ height:100px; position:relative;}
+#Top a.adv{ display:block; width:100%; background:url(../images/advbg.png); text-align:center;}
+#Top .close{ position:absolute; right:0; top:0; cursor:pointer;}
+
+/*header dtyle*/
+#Header{ width:1200px; height:70px; margin:0 auto; padding-top:30px;}
+#Header .Logo{ width:220px; height:70px; float:left; }
+#Header .Search{ width:360px; height:70px; float:left; position:relative; left:100px;}
+#Header .User{ width:550px; height:70px; float:left; text-align:right; margin-top:10px;}
+
+#Header .Search .sea{ width:310px; height:38px; border:1px solid #ddd; outline:none;}
+#Header .Search .btn{ width:42px; height:40px; border:none; background:url(../images/ser_but.png); position:absolute; left:312px;}
+#Header .User a{ color:#666; font-size:12px;margin-right:15px;}
+#Header .User a:hover{ color:#F36;}
+#Header .User span{ font-size:12px; color:#666; }
+#Header .User span a{ margin:0 5px; color:#F66;}
+#Header .User .iconfont{ font-family:"iconfont" !important; font-size:20px; color:#F66; font-style:normal; margin-right:10px;}
+
+/*nav style*/
+#nav{ width:100%; height:50px; background:#000; clear:both;}
+#nav ul{ width:1200px; height:50px; margin:0 auto; color:#FFF; list-style-type:none; position:relative;}
+#nav ul li{ height:50px; float:left; font-size:14px; text-align:center; line-height:50px;}
+
+#nav ul li.first{ width:190px; background:#F33; position:relative;}
+#nav ul li.first .iconfont{ font-family:"iconfont" !important; font-size:18px; color:#FFF; font-style:normal; margin-right:10px;}
+#nav ul li a{ color:#FFF; display:block; padding:0 30px; position:relative; z-index:2;}
+#nav ul li.last{ width:100px; background-color:#666; height:50px; position:absolute; left:190px; z-index:1; display:none;}
+
+/*menu*/
+#nav ul li .menu{ width:190px; height:420px; background:#000; position:absolute; top:50px; left:0;}
+#nav ul li .menu ol li{ list-style-type:none; clear:both; width:100%; height:69px; border-bottom:1px solid #333; line-height:30px; text-align:left; text-indent:15px; position:relative;}
+#nav ul li .menu ol li h3{ height:30px; line-height:30px; color:#F66; font-weight:100; font-size:14px;}
+#nav ul li .menu ol li p{ font-size:12px;}
+#nav ul li .menu ol li p a{ display:inline; padding:0 18px 0 0;}
+#nav ul li .menu ol li p a:hover{ color:#F66;}
+
+/*menu_box*/
+#nav ul li .menu ol li .moreNav{ width:350px; height:200px; border:1px solid #999; position:absolute; top:-1px; left:190px; background:#FFF; z-index:4; display:none;}
+#nav ul li .menu ol li .border_top{ width:100%; height:1px; background:#999; position:absolute; top:-1px; left:0; display:none;}
+#nav ul li .menu ol li .border_bottom{ width:100%; height:1px; background:#999; position:absolute; bottom:-1px; left:0; display:none;}
+#nav ul li .menu ol li .border_right{ width:1px; height:69px; background:#000; position:absolute; top:0px; right:-1px; display:none;}
+
+#nav ul li .menu ol li.hover .moreNav,#nav ul li .menu ol li.hover .border_top,#nav ul li .menu ol li.hover .border_bottom,#nav ul li .menu ol li.hover .border_right{ display:block;}
+
+#nav ul li .menu ol li .moreNav a{ display:block; color:#000; padding:5px; float:left;}
+
+/*part_one style*/
+#Part1{ width:100%; height:419px; background:url(../images/timeGo.png);}
+#Part1 .PartCon{ width:1200px; height:419px; margin:0 auto;}
+#Part1 .PartCon .news{ width:190px; height:419px; float:right; position:relative;}
+#Part1 .PartCon .flash{ width:820px; height:419px; float:right; position:relative;}
+
+#Part1 .PartCon .flash a{ width:71px; height:71px; display:block; position:absolute; top:175px; z-index:3; display:none;}
+#Part1 .PartCon .flash a.prev{ left:-35px; background:url(../images/but.png) -71px 0;}
+#Part1 .PartCon .flash a.next{ right:-35px; background:url(../images/but.png) -71px -71px;}
+#Part1 .PartCon .flash a.prev:hover{ background-position: 0 0;}
+#Part1 .PartCon .flash a.next:hover{ background-position: 1px -71px;}
+
+#Part1 .PartCon .flash .scroll{ width:820px; height:419px; position:relative; overflow:hidden;}
+#Part1 .PartCon .flash .scroll img{ position:absolute; left:820px;}
+
+#Part1 .PartCon .flash .btn{ width:150px; height:20px; background:#000; filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity:0.5; opacity:0.5; position:absolute; left:335px; bottom:10px; border-radius:10px; text-align:center; }
+#Part1 .PartCon .flash .btn span{ width:10px; height:10px; background:#AAA; display:inline-block; border-radius:5px;}
+#Part1 .PartCon .flash .btn span.hover{ background-color:#F6C;}
+
+#Part1 .PartCon .news .newsOpacity{ width:190px; height:419px; background:#000; filter:alpha(opacity=70); -moz-opacity:0.7; -khtml-opacity:0.7; opacity:0.7;}
+#Part1 .PartCon .news .newsCon{ width:190px; height:419px; position:absolute; top:0; left:0; color:#FFF;}
+#Part1 .PartCon .news .newsCon h3{ height:43px; line-height:43px; text-indent:20px; font-size:14px; background:#30060C; font-weight:100;}
+#Part1 .PartCon .news .newsCon .news_flash ul{ padding:10px 5px 20px 10px; overflow:hidden;}
+#Part1 .PartCon .news .newsCon .news_flash ul li{ font-size:12px; height:30px; line-height:30px;}
+#Part1 .PartCon .news .newsCon .news_flash ul a{ color:#FFF; font-size:12px;}
+#Part1 .PartCon .news .newsCon .news_flash ul a font{ color:#F66;}
+#Part1 .PartCon .news .newsCon .news_flash ul a.first{ color:#F66;}
+
+#Part1 .PartCon .news .newsCon .Date_flash{ position:relative;}
+#Part1 .PartCon .news .newsCon .Date_flash .scroll_date{ position:relative; top:10px; overflow:hidden; height:130px;}
+#Part1 .PartCon .news .newsCon .Date_flash ul{ position:absolute;}
+#Part1 .PartCon .news .newsCon .Date_flash ul li{ margin-bottom:2px; border-bottom:1px solid #000;}
+#Part1 .PartCon .news .newsCon .Date_flash ul li#first{ height:21px; line-height:12px;}
+#Part1 .PartCon .news .newsCon .Date_flash .scrollBar{ width:5px; height:125px; position:absolute; right:5px; top:60px; background:#000; filter:alpha(opacity=90); -moz-opacity:0.9; -khtml-opacity:0.9; opacity:0.9; border-radius:3px;}
+#Part1 .PartCon .news .newsCon .Date_flash .scrollBut{ width:5px; height:20px; background:#F9C; border-radius:3px; position:absolute; top:0; left:0px;}
+
+/*Main style*/
+#Main{ width:1200px; margin:20px auto;}
+/*NewProduct style*/
+#NewProduct{ height:355px;}
+#NewProduct .title{ height:53px; position:relative;}
+#NewProduct .title span{ width:150px; height:53px; display:block;}
+#NewProduct .title span.new{ float:left; font-size:24px; line-height:53px; text-indent:40px; background:url(../images/change.png) no-repeat center left;}
+#NewProduct .title span.date{ float:left; font-size:12px; height:22px; line-height:22px; background:#000; border-radius:11px; color:#FFF; text-align:center; margin:21px 0 0 10px;}
+#NewProduct .title span.change{ float:right; width:70px; height:53px; line-height:53px; font-size:14px; cursor:pointer; background:url(../images/data.png) no-repeat right center;}
+#NewProduct .line{ width:1200px; height:10px; background:url(../images/line.png) no-repeat; position:absolute; top:55px;}
+
+#NewProduct .Product{ width:1200px; margin-top:15px; position:relative;}
+#NewProduct .Product .imgList{ width:1250px; position:absolute; margin-left:18px; overflow:hidden; display:none;}
+#NewProduct .Product .imgList dl{ width:246px; float:left; margin:0 22px;}
+#NewProduct .Product .imgList dl.hover{ border:1px solid #F33; margin-right:20px;}
+#NewProduct .Product .imgList dl dt{ font-size:12px; line-height:30px; text-align:center;}
+#NewProduct .Product .imgList dl dt font{ color:#F33; font-size:14px; padding:0 2px; font-weight:bold;}
+#NewProduct .Product .imgList dl dd{ text-align:center;}
+#NewProduct .Product .imgList dl dd.num{ line-height:30px; font-size:14px;}
+#NewProduct .Product .imgList dl dd.num font{ color:#F33; font-size:16px; padding:0 5px;}
+
+/*Flower style*/
+#Flower{ width:1200px; margin-top:50px;}
+#Flower ul.flower_nav{ height:45px; border-bottom:2px solid #FE4D7D;}
+#Flower ul.flower_nav li{ float:right; width:100px; height:45px; line-height:45px; color:#F42760; text-align:center; border-top:1px solid #CCC; background:url(../images/flower-line.png) no-repeat right center; position:relative;}
+#Flower ul.flower_nav li.flower_title{ text-align:right; background:url(../images/title_flower.png) no-repeat left center; float:left; border:0; font-size:24px; font-weight:bold; color:#F33;}
+#Flower ul.flower_nav li.first{ border-right:1px solid #CCC; background:none;}
+#Flower ul.flower_nav li.last{ border-left:1px solid #CCC;} 
+#Flower ul.flower_nav li.hover span{ display:block; background:#FFF; width:102px; height:45px; border-top:2px solid #FE4D7D; border-right:2px solid #FE4D7D; border-left:2px solid #FE4D7D; position:absolute; top:-1px; left:-2px; z-index:2;}
+
+#Flower .flowerCon{ margin-top:10px; height:520px;}
+#Flower .flowerCon .flower_left{ width:645px; height:513px; float:left;}
+#Flower .flowerCon .flower_right{ width:550px; height:513px; float:right;}
+#Flower .flowerCon .flower_right .flowerComm{ width:550px; height:513px; display:none;}
+#Flower .flowerCon .flower_right .flowerComm ul{ width:546px; height:513px; border-left:1px solid #CCC; border-top:1px solid #CCC; float:right;}
+#Flower .flowerCon .flower_right .flowerComm ul li{ width:181px; height:170px; border-right:1px solid #CCC; border-bottom:1px solid #CCC; float:left; position:relative;}
+#Flower .flowerCon .flower_right .flowerComm ul li p{ width:150px; height:50px; background:#CCC; filter:alpha(opacity=60); -moz-opacity:0.6; -khtml-opacity:0.6; opacity:0.6; position:absolute; top:110px; left:15px; display:none; border-radius:1px;}
+#Flower .flowerCon .flower_right .flowerComm ul li p a{ color:#000;}
+
+#Flower .flowerCon .flower_left .flower_flash{ height:350px; background:#FC9;}
+#Flower .accordion{ height:163px; border-left:1px solid #DDD;}
+#Flower .accordion ul{ position:relative;}
+#Flower .accordion ul li{ width:50px; height:161px; border:1px solid #CCC; border-left:0px; float:left; position:relative; overflow:hidden; cursor:default;}
+#Flower .accordion ul li.box{ width:388px;}
+#Flower .accordion ul li h3{ font-size:14px; width:14px; height:121px; padding:40px 18px 0 18px;border-right:1px solid #CCC;}
+#Flower .accordion ul li h3.hover{ background:#F66; color:#FFF; font-weight:bold;}
+#Flower .accordion ul li div{ width:337px; height:161px; background:#666; position:absolute; top:0; left:51px;}
+#Flower .accordion ul li.last{ position:absolute; top:0; right:0;}
+
+#Cake{ width:1200px; height:730px; margin-top:50px;}
+#Cake .cake_nav{ height:55px; width:1200px;}
+#Cake .cake_nav span.cake_title{ width:100px; height:45px; line-height:45px; text-align:right; color:#F33; font-size:24px; font-weight:bold; display:block; background:url(../images/title_cake.jpg) no-repeat left center;}
+#Cake .cake_nav .line{ width:1200px; height:10px; background:url(../images/line.png) no-repeat;}
+
+#Cake .cakeCon{ width:1200px; margin-top:10px;}
+#Cake .cake_left{ margin-top:2px; width:881px; height:661px; float:left; position:relative;}
+#Cake .cake_left ul{ width:880px; height:660px; border-top:1px solid #CCC; border-left:1px solid #CCC; position:absolute; left:0;}
+#Cake .cake_left ul li{ width:219px; height:219px; border-right:1px solid #CCC; border-bottom:1px solid #CCC; float:left;}
+#Cake .cake_left .gray{ width:881px; height:661px; background-color:#000; filter:alpha(opacity=70); -moz-opacity:0.7; -khtml-opacity:0.7; opacity:0.7; position:absolute; top:0; left:0; display:none;}
+#Cake .cake_left .showCake{ width:600px; height:300px; position:absolute; top:180px; left:140px; background:#FFF; border:2px solid #F33; display:none;}
+#Cake .cake_left .showCake img.cake_prev{ position:absolute; top:130px; left:-50px; cursor:pointer; display:none;}
+#Cake .cake_left .showCake img.cake_next{ position:absolute; top:130px; right:-50px; cursor:pointer; display:none;}
+#Cake .cake_left .showCake img.cake_img{ position:absolute; left:20px;}
+#Cake .cake_left .showCake .productInfo{ border-left:1px solid #DDD; padding: 0 5px 0 10px; width:283px; height:290px; float:right; padding-top:6px; position:relative;}
+#Cake .cake_left .showCake .productInfo h3{ width:270px; height:26px; overflow:hidden;}
+#Cake .cake_left .showCake .productInfo h3 a{ color:#000; line-height:24px; font-size:15px;}
+#Cake .cake_left .showCake .productInfo h3 a:hover{ text-decoration:underline;}
+#Cake .cake_left .showCake .productInfo p{ font-size:14px;}
+#Cake .cake_left .showCake .productInfo p.choice_style{ height:20px;}
+#Cake .showCake .productInfo ul.choice_ul{ width:270px; height:56px; position:static; border:none;}
+#Cake .showCake .productInfo ul.choice_ul li{ border:1px solid #CCC; height:25px; width:76px; margin-left:10px; margin-top:5px;}
+#Cake .cake_left .showCake .productInfo p.profile{ clear:left; border-bottom:1px solid #CCC; line-height:30px;}
+#Cake .cake_left .showCake .productInfo p.profileCon{ height:90px; margin-top:5px; text-indent:28px; font-size:12px;}
+#Cake .cake_left .showCake .productInfo .img_button{ width:260px; height:37px; margin-top:5px; margin-left:10px; position:relative;}
+#Cake .cake_left .showCake .productInfo .img_button .join{ position:absolute; right:0px; cursor:pointer;}
+
+#Cake .cake_right{ width:300px; border:1px solid #CCC; float:right;}
+#Cake .cake_right h3{ width:300px; height:45px; line-height:45px; background:#F42760; color:#FFF; font-weight:bold; text-indent:15px;}
+#Cake .cake_right dl{ width:280px; height:134px; padding:10px;}
+#Cake .cake_right dl dt{ margin:5px; width:134px; float:left;}
+#Cake .cake_right dl dt a{ border:1px solid #DDD; display:block;}
+#Cake .cake_right dl dt a:hover{ border:2px solid #F33;}
+#Cake .cake_right dl dd{ width:120px; float:right;}
+#Cake .cake_right dl dd.dl_title{ height:95px; font-size:12px; line-height:25px; margin-bottom:10px; overflow:hidden;}
+#Cake .cake_right dl dd.dl_title a{ color:#222;}
+#Cake .cake_right dl dd.dl_title a:hover{ text-decoration:underline;}
+#Cake .cake_right dl dd.cake_price{ color:#F33; font-weight:bold; font-size:20px;}
+
+/*Floor begin*/
+.Floor{ width:1200px; height:460px; margin-top:50px;}
+.Floor .navFloor{ width:192px; height:461px; margin-right:4px;}
+.Floor .flashFloor{ width:429px; height:461px; }
+.Floor .showFloor{ width:571px; height:461px;}
+.Floor .L{ float:left;}
+.Floor .R{ float:right;}
+
+/*Floor nav*/
+.Floor .navFloor img.pFloorNav{ display:block; margin:10px 45px;}
+.Floor .navFloor ul.fNavCon{ width:160px; height:150px; margin:0 auto; padding-top:20px;}
+.Floor .navFloor ul.fNavCon li a{ color:#666; font-size:14px; line-height:28px;}
+.Floor .navFloor ul.fNavCon li a:hover,.Floor .showFloor ul li a:hover{ text-decoration:underline; color:#E93052;}
+
+/*Floor show*/
+.Floor .showFloor ul{ width:571px; height:461px; border-right:1px solid #CCC; border-top:1px solid #CCC;}
+.Floor .showFloor ul li{ width:189px; height:229px; float:left; border-left:1px solid #CCC; border-bottom:1px solid #CCC;}
+.Floor .showFloor ul li img{ display:block; margin:5px auto; }
+.Floor .showFloor ul li a{ display:block; padding-left:100px; color:#F44; font-size:20px; font-weight:bold;}
+
+/*Floor flash*/
+.Floor .flashFloor .commFlash{width:100%; height:461px; position:relative; overflow:hidden;}
+.Floor .flashFloor .commFlash ul.flashImg{ height:461px; width:3000px; position:absolute; left:0px;}
+.Floor .flashFloor .commFlash ul.flashImg li{ width:429px; height:461px; float:left;}
+.Floor .flashFloor .commFlash ul.img_btn{ background:#000; filter:alpha(opacity=70); -moz-opacity:0.7; -khtml-opacity:0.7; opacity:0.7; border-radius:10px; position:absolute; left:170px; bottom:20px; padding:0 10px;}
+.Floor .flashFloor .commFlash ul.img_btn li{ width:12px; height:12px; border-radius:6px; background:#CCC; float:left; margin:3px;}
+.Floor .flashFloor .commFlash ul.img_btn li.hover{ background:#F33;}
+.Floor .flashFloor .commFlash img.prev{ position:absolute; top:220px; left:0;}
+.Floor .flashFloor .commFlash img.next{ position:absolute; top:220px; right:0;}
+
+
+/*LTNav style*/
+#LTNav{ width:42px; position:fixed; top:120px; left:10px; background:#FFF; display:none;}
+#LTNav ul{ border:1px solid #000;}
+#LTNav ul li{ width:40px; height:40px; border-bottom:1px solid #000; font-size:14px; line-height:40px; text-align:center; position:relative; cursor:pointer;}
+#LTNav ul li span{ width:40px; height:40px; position:absolute; top:0; left:0;}
+#LTNav ul li span{ display:none;}
+#LTNav ul li.hover span{ background:#F00; color:#FFF; display:block;}
+#LTNav ul li.hover span.active{ background:#F00; color:#FFF; display:block;}
+#LTNav ul li span.active{ background:#FFF; color:#F00; display:block;}
+#LTNav ul li.Top{ border:0; background:#F00; color:#FFF;}
+
+/*footer-help style*/
+
+/*mod-a*/
+#footer-help{ height:210px; background:#EEE; border-bottom:1px solid #CCC; border-top:1px solid #CCC;}
+#footer-help .container{ width:1200px; height:150px; margin:0 auto;}
+#footer-help .container .mod{ width:280px; height:150px; float:left; margin-top:30px;}
+#footer-help .container .mod-a{  border-right:1px solid #CCC; padding-left:20px; }
+#footer-help .container .mod h4{ font-size:16px; font-weight:100; margin-bottom:10px;}
+#footer-help ul.list-unstyled{ width:300px;}
+#footer-help ul.list-unstyled li{ float:left;display: inline-block; width: 80px; padding-right:30px; font-size:13px; line-height:22px;}
+#footer-help ul.list-unstyled li a{ color:#666;}
+
+/*mod-b*/
+#footer-help .container .mod-b{ padding-left:70px; border-right:1px solid #CCC;}
+#footer-help .mod-b ul.list-unstyled li{ float:none;display: inline-block; width: 245px; padding-right:30px; font-size:13px;}
+
+/*mod-c*/
+#footer-help .container .mod-c{ padding-left:70px;}
+#footer-help .container .mod-c p{ font-size:13px; color:#666;}
+#footer-help .container .mod-c a{ color:#666;}
+
+/*mod-d*/
+#footer-help .container .mod-d{ width:120px; height:150px; padding:10px; margin-left:20px;}
+#footer-help .container .mod-d img{ width:120px; height:120px; display:block;}
+
+/*footer*/
+#footer{ width:1200px; margin:0 auto; margin-top:30px;}
+#footer .footer-link{ border-bottom:1px solid #DDD; padding-bottom:30px;}
+#footer .footer-link b{ display:inline-block; margin-right:20px; font-size:15px;}
+#footer .footer-link a{ color:#666; font-size:14px; margin-bottom:10px; display:inline-block; padding-left:10px; padding-right:15px; background:url(../images/flower-line.png) no-repeat right;}
+
+#footer .footer{ color:#666; margin:20px auto; width:300px;}
+
+

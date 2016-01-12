@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#box{ width:350px; height:426px; border:1px solid #000; margin:50px 300px; position: relative;}
+#box .show{ width:350px; height:356px;}
+#box .bShow{ width:300px; height:300px; position: absolute; left:360px; top:0; border:1px solid #DDD; overflow:hidden; display:none;}
+#box .bShow img{ position:absolute;}
+#box .shade{ width:350px; height:356px; position:absolute; left:0; top:0;}
+#box .sShow{ width:180px; height:160px; background:#09F; display:block; filter:alpha(opacity=30); -moz-opacity:0.3; -khtml-opacity:0.3; opacity:0.3; dispaly:block; position:absolute; left:0; top:0; display:none;}
+#box .btn{ margin:10px;}
+#box .btn img{ border:1px solid #666;}
+#box .btn img.active{ border:2px solid #F00;}
+</style>
+</head>
+
+<body>
+<div id="box">
+	<div class="show">
+		<img src="images/necklace1.jpg" width="350" height="356" />
+        <span class="sShow"></span>
+        <span class="shade"></span>
+    </div>
+    
+    <div class="btn">
+    	<img src="images/necklace1.jpg" class="active" width="50" height="50" dataSrc="images/necklace1.jpg" />
+        <img src="images/necklace2.jpg" width="50" height="50" dataSrc="images/necklace2.jpg" />
+        <img src="images/necklace3.jpeg" width="50" height="50" dataSrc="images/necklace3.jpeg" />
+        <img src="images/necklace4.jpg" width="50" height="50" dataSrc="images/necklace4.jpg" />
+        <img src="images/necklace5.jpg" width="50" height="50" dataSrc="images/necklace5.jpg" />
+    </div>
+    
+    <div class="bShow">
+    	<img src="images/necklace1.jpg" />
+    </div>
+    
+    
+</div>
+
+
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$("#box .shade").hover(function(){
+	$("#box .sShow,.bShow").show();
+},function(){
+	$("#box .sShow,.bShow").hide();
+});
+
+$("#box .shade").mousemove(function(e){
+	//获取鼠标与浏览器窗口的距离
+	var x=e.clientX;
+	var y=e.clientY;
+	//获取浏览器与shade的距离
+	var l=$(this).offset().left;
+	var t=$(this).offset().top;
+	//获取鼠标与sShow边界的距离
+	var w=$("#box .sShow").width()/2;
+	var h=$("#box .sShow").height()/2;
+	
+	//小滑块滑动的距离
+	var _left=x-l-w;
+	var _top=y-t-h;
+	
+	//小滑块滑动的最大距离
+	var maxW=$("#box .shade").width()-w*2-2;
+	var maxH=$("#box .shade").height()-h*2-2;
+	
+	//防止小滑块滑出盒子范围
+	if(_left<0){
+		_left=0;
+	}else if(_left>maxW){
+		_left=maxW;
+	}
+	if(_top<0){
+		_top=0;
+	}else if(_top>maxH){
+		_top=maxH;
+	}
+	
+	//给小滑块赋值
+	$("#box span.sShow").css({"left":_left,"top":_top});
+	
+	//小滑块滑动的比例
+	var wPro=_left/maxW;
+	var hPro=_top/maxH;
+	
+	//大图移动的距离
+	var BigLeft=wPro*($(".bShow img").width()-$(".bShow").width());
+	var BigTop=hPro*($(".bShow img").height()-$(".bShow").height());
+	
+	//给大图赋值
+	$(".bShow img").css({"left":-BigLeft,"top":-BigTop});
+	
+});
+
+$("#box .btn img").mousemove(function(){
+	$(this).addClass("active").siblings().removeClass("active");
+	var bSrc=$(this).attr("dataSrc");
+	$("#box .show img,#box .bShow img").attr("src",bSrc);
+})
+
+</script>
+</html>
