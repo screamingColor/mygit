@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>树形菜单结构</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .treeNode li{
+            margin:3px 0px 3px -20px;
+            white-space: nowrap;
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+<h2>树形菜单导航：展开|收缩</h2>
+<ul class="treeList">
+    <li>
+        <!-- 当先项-->
+        <div class="treeList">
+            <a href="javascript:void(0)" class="treelcon">-</a>
+            <a href="javascript:void(0)">1点</a>
+
+        </div>
+        <!--子菜单-->
+        <ul class="treeNode">
+            <li>
+                <!--当前项-->
+                <div class="treeList">
+                    <a href="javascript:void(0)" class="treelcon">-</a>
+                    <a href="javascript:void(0)">1-2点</a>
+                </div>
+                <!--子菜单-->
+                <ul class="treeNode">
+                    <li>
+                        <!-- 当前项-->
+                        <div class="treeList">
+                            <a href="javascript:void(0)" class="treelcon">-</a>
+                            <a href="javascript:void(0)">1-2-1点</a>
+                        </div>
+                        <!--子菜单 -->
+                        <ul class="treeNode">
+                            <li>
+                                <!-- 当前项-->
+                                <div class="treeList">
+                                    <a href="javascript:void(0)" class="treelcon">-</a>
+                                    <a href="javascript:void(0)">1-2-1-1点</a>
+                                </div>
+                                <!-- 子菜单-->
+                                <ul>hello</ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <!-- 当先项-->
+                <div class="treeList">
+                    <a href="javascript:void(0)" class="treelcon">-</a>
+                    <a href="javascript:void(0)">1-3点</a>
+                </div>
+                <ul>my</ul>
+            </li>
+            <li>
+                <!-- 当先项-->
+                <div class="treeList">
+                    <a href="javascript:void(0)" class="treelcon">-</a>
+                    <a href="javascript:void(0)">1-4点</a>
+                </div>
+                <ul>name</ul>
+            </li>
+            <li>
+                <!-- 当先项-->
+                <div class="treeList">
+                    <a href="javascript:void(0)" class="treelcon">-</a>
+                    <a href="javascript:void(0)">1-5点</a>
+                </div>
+                <ul>is...</ul>
+            </li>
+            <li>
+                <!-- 当先项-->
+                <div class="treeList">
+                    <a href="javascript:void(0)" class="treelcon">-</a>
+                    <a href="javascript:void(0)">1-6点</a>
+                </div>
+                <!-- 子菜单-->
+                <ul class="treeNode">
+                    <li>
+                        <!-- 当前项-->
+                        <div class="treeList">
+                            <a href="javascript:void(0)" class="treelcon">-</a>
+                            <a href="javascript:void(0)">1-6-1点</a>
+                        </div>
+                    </li>
+                    <li>
+                        <!-- 当前项-->
+                        <div class="treeList">
+                            <a href="javascript:void(0)" class="treelcon">-</a>
+                            <a href="javascript:void(0)">1-6-2点</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+
+</ul>
+<script>
+    window.onload = function(){
+        function getTypeELement(es,type){//获取指定节点
+            var esLen = es.length,
+                    i = 0,
+                    eArr = [],
+                    esl = null;
+            for(;i<esLen;i++){
+                esl = es[i];
+                if(esl.nodeName.replace("#","").toLocaleLowerCase()==type){
+                    eArr.push(esl);
+                }
+            }
+            return eArr;
+        }
+        function treeMenuNav(){ //树形菜单导航
+            var as = document.getElementsByTagName("a"),//获取所有的a元素
+                    ai = 0,                            //循环变量初始引导值
+                    al = as.length,                    //a的个数
+                    ao = null;//被遍历的当前元素
+
+            for(;ai<al;ai++){
+                ao = as[ai];
+                if(ao.className == "treelcon"){ //判断是否是树形节点被单击的地方
+                    ao.onclick = function(){//绑定单击事件
+                        var iconType = this.innerHTML,//获取展示类型
+                                uls = getTypeELement(this.parentNode.parentNode.childNodes,"ul"),
+                                uli = 0,          //元素初始值
+                                ull = uls.length,//子菜单个数
+                                dis = "block";  //默认显示（展开）子菜单
+                        if(iconType == "-"){
+                            this.innerHTML = "+";
+                            dis="none";
+                        }
+                        else{
+                            this.innerHTML="-";
+                        }
+                        for(;uli<ull;uli++){
+                            uls[uli].style.display = dis;
+                        }
+                    }
+                }
+            }
+        }
+        treeMenuNav();
+    };
+</script>
+</body>
+</html>
