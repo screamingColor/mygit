@@ -56,7 +56,7 @@
           var slideId = -1;
           slide.onmouseover = function(){
               //打开滑动门
-              //子元素会干扰时间，导致抖动，当再次进入元素时，停止隐藏滑动门的线程
+              //子元素会干扰时间，导致抖动，当再次进入元素时，停止隐藏滑动门的线程；
               clearTimeout(slideId);
               new animateManage({//播放显示元素的动画
                   "context":slide,   //被操作的元素
