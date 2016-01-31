@@ -2,11 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe6b8687-a0d4-414e-93e0-d5f5287bbde9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node/web_crawler/crawler.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/mygit.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/crawler.js" afterPath="$PROJECT_DIR$/node/web_crawler/crawler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/boolbase/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/boolbase/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/css-what/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/css-what/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/domutils/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/domutils/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/nth-check/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/css-select/node_modules/nth-check/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/dom-serializer/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/dom-serializer/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/dom-serializer/node_modules/domelementtype/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/dom-serializer/node_modules/domelementtype/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/entities/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/entities/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/domelementtype/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/domelementtype/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/domhandler/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/domutils/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/entities/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/entities/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/core-util-is/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/core-util-is/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/isarray/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/isarray/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/string_decoder/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/htmlparser2/node_modules/readable-stream/node_modules/string_decoder/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/lodash/package.json" afterPath="$PROJECT_DIR$/node/web_crawler/node_modules/cheerio/node_modules/lodash/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mygit.iws" />
@@ -41,8 +56,8 @@
       <file leaf-file-name="crawler.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node/web_crawler/crawler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5233161">
-              <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.7150259">
+              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
               </folding>
@@ -349,7 +364,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.03125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.49463806" order="6" side_tool="false" content_ui="tabs" />
@@ -761,14 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node/school/student.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node/school/teacher.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -789,6 +796,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node/school/student.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node/node00.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -799,8 +814,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node/web_crawler/crawler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5233161">
-          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.7150259">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
           </folding>

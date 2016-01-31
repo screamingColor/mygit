@@ -7,52 +7,15 @@ var url =  'http://www.imooc.com/learn/348'
 
 
 
-function filterChapters(html){
+function filterChapters(html) {
     var $ = cheerio.load(html)
-    var chapters = $('.learnchapter')
-   /* [{
-        chapterTitle:'',
-        videos:[
-            title:'',
-             id:''
-        ]
-    }]id
-    */
-    var courseData = []
+    var chapters = $('.chapter')
 
-    chapters.each(function(item){
+
+    chapters.each(function () {
         var chapter = $(this)
         var chapterTitle = chapter.find('strong').text()
-        var videos = chapter.find('.video').children('li')
-        var chapterData = {
-            chapterTitle:chapterTitle,
-            videos:[]
-        }
-        videos.each(function(item){
-            var video = $(this).find('.studyvideo')
-            var videoTitle = video.text()
-            var id = video.attr('href').split('video/')[1]
-
-            chapterData.videos.push({
-                title:videoTitle,
-                id: id
-            })
-            courseData.push(chapterData)
-        })
-        return courseData
-
-
-    })
-}
-
-function printCourseInfo(courseData){
-    courseData.forEach(function(item){
-        var chapterTitle = item.chapterTitle
-        console.log(chapterTitle+'\n')
-        item.videos.forEach(function(video){
-            console.log('['+video.id+']'+video.title+'\n')
-
-        })
+        console.log(chapterTitle);
     })
 }
 
@@ -62,10 +25,10 @@ function printCourseInfo(courseData){
          html += data
      })
      res.on('end',function(){
-         //console.log(html)//这里返回的是网页源码
+       //  console.log(html)//这里返回的是网页源码
          //但是！！我们希望服务器能进行解析过滤，拿到我们想要的，这里我们要章节大纲,
-        var courseData = filterChapters(html)
-         printCourseInfo(courseData)
+        filterChapters(html)
+
      })
  }).on('error',function(){
      console.log("wrong!!!")
