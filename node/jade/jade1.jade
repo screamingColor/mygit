@@ -1,8 +1,61 @@
 doctype html
 html
   head
+    meta(charset='utf-8')
     title i am
   body
-    h1.classname(id='title') jade
+
+    h2.classname(id='title') jade
     p#idname hh
-   input(name='course',type='text',value='jade') 
+  style.
+  script.
+     var my = l
+
+  h2 if else
+  - var ismooc = true
+  - var lessons =['jade','node']
+  if lessons 
+    if lessons.length >2
+      p more than 2:#{lessons.join(',')}
+    else if lessons.length>1
+      p more than 1:#{lessons.join(',')}
+    else 
+      p no lesson
+  else
+    p no lesson
+
+  h2 unless
+  unless !ismooc
+    p #{lessons.length}  
+
+  h2 case
+  - var name = 'jade'
+  case name
+    when 'java'
+    when 'node'
+      p hi 'node'
+    when 'jade': p hi exress
+    default
+      p hi #{name}
+
+
+  h2 for 
+    - var i = {course:'jade',level:'high'}
+    - for (var k in i)
+      p= i[k]
+  h2 each      
+    -each value,key in i
+      p #{key}:#{value} 
+
+  h2 遍历数组
+  - var courses = ['node','jade','express']  
+    each item in courses
+      p=item     
+   
+  h2 嵌套循环
+  - var sections = [{id:1,items:['a','b']},{id:2,items:['c','d']}] 
+  dl
+    each section in sections
+      dt=section.id
+      each item in section.items
+        dd=item
