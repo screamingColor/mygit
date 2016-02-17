@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>drag</title>
+</head>
+<body>
+<div id="droptarget" style="border: solid 1px #000;width: 130px;height: 130px;">可放在此处</div>
+<div draggable="true" style="margin: 20px;border: solid 1px #f0ad4e;width: 30px">移动吧</div>
+
+</body>
+<script>
+    /*element代表元素，type代表事件类型，handler代表事件被触发时调用的方法 */
+
+     var EventUtil = {
+
+     addHandler: function (element, type, handler) {
+
+     if (element.addEventListener) {
+
+     element.addEventListener(type, handler, false);
+
+     } else if (element.attachEvent) {
+
+     element.attachEvent("on" + type, handler);
+
+     } else {
+
+     element["on" + type] = handler;
+
+     }
+
+     },
+
+     preventDefault: function (event) {
+
+     if (event.preventDefault) {
+
+     event.preventDefault();
+
+     } else {
+
+     event.returnValue = false;
+
+     }
+
+     }
+
+     };
+
+    var droptatget = document.getElementById('droptarget');
+    EventUtil.addHandler(droptatget,"dragover",function(event){
+        EventUtil.preventDefault(event);
+    });
+    EventUtil.addHandler(droptatget,"dragenter",function(event){
+        EventUtil.preventDefault(event);
+    });
+</script>
+</html>
