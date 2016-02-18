@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>selector api</title>
+    <style>
+        td{
+            outline: solid 1px #cc2123;
+            padding: 20px;
+        }
+        td:hover{
+            background-color: #ec971f;
+        }
+        #result{
+            outline: solid 1px #333333;
+            width: 100px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+
+    </table>
+<div id="result"></div>
+    <script>
+          var hovered = document.querySelector('td:hover');
+          if(hovered){
+
+              document.getElementById('result').innerHTML=hovered.innerHTML;
+          }
+
+
+
+    </script>
+</section>
+
+</body>
+</html>
