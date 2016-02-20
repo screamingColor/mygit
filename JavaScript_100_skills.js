@@ -269,3 +269,118 @@ function display(id) {
         obj.style.display = obj.style.display == '' ? 'none' : '';
     }
 }
+//21.原生的javascript中有insertBefore方法，但却没有inserAfter方法
+function insertAfter(newChild,refChild){
+    var parElem = refChild.parentNode;
+    if(parElem.lastChild == refChild){
+        refChild.appendChild(newChild);
+    }else{
+        parElem.insertBefore(newChild,refChild.nextSibling);
+    }
+}
+
+//22.原生javascript中兼容浏览器绑定元素事件
+function addEventSamp(obj,evt,fn){
+    if(obj.addEventListener){
+        obj.addEventListener(evt,fn,false);
+    }else if(obj.attachEvent){
+        obj.attachEvent('on'+evt,fn);
+    }
+}
+
+//23.原生javascript光标停在文字后面，文本框获得焦点时调用
+function focuslast(){
+    var e = event.srcElement;
+    var r = e.createTextRange();
+    r.moveStart('character', e.value.length);
+    r.collapse(true);
+    r.select();
+}
+//24.原生javascript检验URL链接是否有效
+function getUrlState(URL){
+    var xmlhttp = new ActiveXObject('microsoft.xmlhttp');
+    xmlhttp.open('GET',URL,false);
+    try{
+        xmlhttp.send();
+    }catch(e){
+    }finally{
+        var result = xmlhttp.responseText;
+        if(result){
+            if(xmlhttp.STATUS_CODES==200){
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+    }
+}
+
+//25.原生javascript格式化CSS样式代码
+function formatCss(s){//格式化代码
+    s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+    s = s.replace(/;\s*;/g, ";"); //清除连续分号
+    s = s.replace(/\,[\s\.\#\d]*{/g, "{");
+    s = s.replace(/([^\s])\{([^\s])/g, "$1 {\n\t$2");
+    s = s.replace(/([^\s])\}([^\n]*)/g, "$1\n}\n$2");
+    s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2");
+    return s;
+}
+
+//26.原生javascript压缩CSS代码
+function yasuoCss (s) {//压缩代码
+    s = s.replace(/\/\*(.|\n)*?\*\//g, ""); //删除注释
+    s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+    s = s.replace(/\,[\s\.\#\d]*\{/g, "{"); //容错处理
+    s = s.replace(/;\s*;/g, ";"); //清除连续分号
+    s = s.match(/^\s*(\S+(\s+\S+)*)\s*$/); //去掉首尾空白
+    return (s == null) ? "" : s[1];
+}
+//27.原生javascript获取当前路径
+var currentPageUrl = "";
+if (typeof this.href === "undefined") {
+    currentPageUrl = document.location.toString().toLowerCase();
+}
+else {
+    currentPageUrl = this.href.toString().toLowerCase();
+}
+
+//28.原生javascript IP 转成整型
+function _ip2int(ip){
+    var num = 0;
+    ip = ip.split('.')
+    num = Number(ip[0])*256*256*256+Number(ip[1])*256*256+Number(ip[2])*256 + Number(ip[3]);
+    num = num>>>0;//所有非数值转换成0,所有大于等于 0 数取整数部分
+
+    return num;
+}
+
+//29.原生javascript整型解析成IP地址
+function _int2iP(num){
+    var str;
+    var tt = new Array();
+    tt[0] = (num >>> 24) >>> 0;
+    tt[1] = ((num << 8) >>> 24) >>> 0;
+    tt[2] = (num << 16) >>> 24;
+    tt[3] = (num << 24) >>> 24;
+    str = String(tt[0]) + "." + String(tt[1]) + "." + String(tt[2]) + "." + String(tt[3]);
+    return str;
+}
+
+//30.原生javascript实现checkbox全选与不选
+function checkAll(){
+    var selectall = document.getElementById("selectall");
+    var allbox = document.getElementsByName("allbox");
+    if(selectall.checked){
+        for(var i = 0;i<allbox.length;i++){
+            allbox[i].checked = true;
+        }
+    }else{
+        for(var i = 0;i<allbox.length;i++){
+            allbox[i].checked = false;
+        }
+    }
+}
+
+//...............................移动篇..............................
