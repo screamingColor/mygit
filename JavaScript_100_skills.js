@@ -384,3 +384,576 @@ function checkAll(){
 }
 
 //..............................移动篇..............................
+//原生javascript判断是否移动设备
+function isMobile(){
+    if (typeof this._isMobile === 'boolean'){
+        return this._isMobile;
+    }
+    var screenWidth = this.getScreenWidth();
+    var fixViewPortsExperiment = rendererModel.runningExperiments.FixViewport || rendererModel.runningExperiments.fixviewport;
+    var fixViewPortsExperimentRunning = fixViewPortsExperiment && (fixViewPortsExperiment.toLowerCase() === "new");
+    if(!fixViewPortsExperiment){
+        if(!this.isAppleMobileDevice()){
+            screenWidth = screenWidth/window.devicePixelRatio;
+        }
+    }
+    var isMobileScreenSize = screenWidth < 600;
+    var isMobileUserAgent = false;
+    this._isMobile = isMobileScreenSize && this.isTouchScreen();
+    return this._isMobile;
+}
+
+//32.原生javascript判断是否移动设备访问
+function isMobileUserAgent(){
+    return (/iphone|ipod|android.*mobile|windows.*phone|blackberry.*mobile/i.test(window.navigator.userAgent.toLowerCase()));
+}
+
+//33.原生javascript判断是否苹果设备访问
+function isAppleMobileDevice(){
+    return (/iphone|ipod|ipad|Macintosh/i.test(navigator.userAgent.toLowerCase()));
+}
+
+//34.原生javascript判断是否安卓设备访问
+function isAndroidMobileDevice(){
+    return (/android/i.test(navigator.userAgent.toLowerCase()));
+}
+
+//35.原生javascript判断是否Touch屏幕
+function isTouchScreen(){
+    return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+}
+
+//36.原生javascript判断是否在安卓上的谷歌浏览器
+function isNewChromeOnAndroid(){
+    if(this.isAndroidMobileDevice()){
+        var userAgent = navigator.userAgent.toLowerCase();
+        if((/chrome/i.test(userAgent))){
+            var parts = userAgent.split('chrome/');
+
+            var fullVersionString = parts[1].split(" ")[0];
+            var versionString = fullVersionString.split('.')[0];
+            var version = parseInt(versionString);
+
+            if(version >= 27){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+//37.原生javascript判断是否打开视窗
+function isViewportOpen() {
+    return !!document.getElementById('wixMobileViewport');
+    //!!就是将所有其他类型都转换成boolean型
+    /*例：
+    var o={flag:true};
+    var test=!!o.flag;//等效于var test=o.flag||false;*/
+}
+
+//38.原生javascript获取移动设备初始化大小
+function getInitZoom(){
+    if(!this._initZoom){
+        var screenWidth = Math.min(screen.height, screen.width);
+        if(this.isAndroidMobileDevice() && !this.isNewChromeOnAndroid()){
+            screenWidth = screenWidth/window.devicePixelRatio;
+        }
+        this._initZoom = screenWidth /document.body.offsetWidth;
+    }
+    return this._initZoom;
+}
+
+//39.原生javascript获取移动设备最大化大小
+function getZoom(){
+    var screenWidth = (Math.abs(window.orientation) === 90) ? Math.max(screen.height, screen.width) : Math.min(screen.height, screen.width);
+    if(this.isAndroidMobileDevice() && !this.isNewChromeOnAndroid()){
+        screenWidth = screenWidth/window.devicePixelRatio;
+    }
+    var FixViewPortsExperiment = rendererModel.runningExperiments.FixViewport || rendererModel.runningExperiments.fixviewport;
+    var FixViewPortsExperimentRunning = FixViewPortsExperiment && (FixViewPortsExperiment === "New" || FixViewPortsExperiment === "new");
+    if(FixViewPortsExperimentRunning){
+        return screenWidth / window.innerWidth;
+    }else{
+        return screenWidth / document.body.offsetWidth;
+    }
+}
+
+//40./原生javascript获取移动设备屏幕宽度
+function getScreenWidth(){
+    var smallerSide = Math.min(screen.width, screen.height);
+    var fixViewPortsExperiment = rendererModel.runningExperiments.FixViewport || rendererModel.runningExperiments.fixviewport;
+    var fixViewPortsExperimentRunning = fixViewPortsExperiment && (fixViewPortsExperiment.toLowerCase() === "new");
+    if(fixViewPortsExperiment){
+        if(this.isAndroidMobileDevice() && !this.isNewChromeOnAndroid()){
+            smallerSide = smallerSide/window.devicePixelRatio;
+        }
+    }
+    return smallerSide;
+}
+//...........移动结束............
+
+
+//41.原生javascript完美判断是否为网址
+function IsURL(strUrl) {
+    var regular = /^\b(((https?|ftp):\/\/)?[-a-z0-9]+(\.[-a-z0-9]+)*\.(?:com|edu|gov|int|mil|net|org|biz|info|name|museum|asia|coop|aero|[a-z][a-z]|((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d))\b(\/[-a-z0-9_:\@&?=+,.!\/~%\$]*)?)$/i
+    if (regular.test(strUrl)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+//42.原生javascript根据样式名称检索元素对象
+function getElementsByClassName(name){
+    var tags = document.getElementsByTagName('*')||document.all;
+    var els = [];
+    for(var i = 0;i<tags.length;i++){
+        if(tags[i].classList){
+            var cs = tags[i].className.split(' ');
+            for(var j = 0;j<cs.length;j++){
+                if(name==cs[j]){
+                    els.push(tags[i]);
+                    break
+                }
+            }
+        }
+    }
+    return els
+}
+
+//43.原生javascript判断是否以某个字符串开头
+String.prototype.startWith = function(s){
+    return this.indexOf(s)==0
+}
+
+//44.原生javascript判断是否以某个字符串结束
+String.prototype.endWith = function(s){
+    var d = this.length - s.length;
+    return(d>=0 && this.lastIndexOf(s)==d)
+}
+
+//45.原生javascript返回IE浏览器版本号
+function getIE(){
+    if(window.ActiveXObject){
+        var v =navigator.userAgent.match(/MSIE ([^;]+)/)[1];
+        return parseFloat(v.substring(0, v.indexOf(".")))
+    }
+    return false
+}
+
+//46.原生javascript获取页面高度
+function getPageHeight(){
+    var g = document,
+        a = g.body,
+        f = g.documentElement,
+        d = g.compatMode == 'BackCompat'? a : g.documentElement;
+    return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
+}
+/*document.compatMode用来判断当前浏览器采用的渲染方式。
+
+官方解释：
+
+BackCompat：标准兼容模式关闭。
+CSS1Compat：标准兼容模式开启。
+当document.compatMode等于BackCompat时，浏览器客户区宽度是document.body.clientWidth；
+当document.compatMode等于CSS1Compat时，浏览器客户区宽度是document.documentElement.clientWidth。*/
+
+//47.原生javascript获取scrollLeft
+function getPageScrollLeft(){
+    var a = document;
+    return a.documentElement.scrollLeft || a.body.scrollLeft;
+}
+
+//48.原生javascript获取页面可视宽度
+function getPageViewWidth(){
+    var d = document,
+        a = d.compatMode == 'BackCompat'
+        ? d.body : d.documentElement;
+    return a.clientWidth;
+}
+//49.原生javascript获取页面宽度
+function getPageWidth(){
+    var g = document, a = g.body, f = g.documentElement, d = g.compatMode == "BackCompat"
+        ? a
+        : g.documentElement;
+    return Math.max(f.scrollWidth, a.scrollWidth, d.clientWidth);
+}
+
+//50.原生javascript获取页面scrollTop
+function getPageScrollTop(){
+    var a = document;
+    return a.documentElement.scrollTop || a.body.scrollTop;
+}
+
+//51.原生javascript获取页面可视高度
+function getPageViewHeight() {
+    var d = document, a = d.compatMode == "BackCompat"
+        ? d.body
+        : d.documentElement;
+    return a.clientHeight;
+}
+
+//52.原生javascript跨浏览器添加事件
+function addEvt(oTarget,sEvtType,fnHandle){
+    if(!oTarget){return;}
+    if(oTarget.addEventListener){
+        oTarget.addEventListener(sEvtType,fnHandle,false);
+    }else if(oTarget.attachEvent){
+        oTarget.attachEvent("on"+sEvtType,fnHandle);
+    }else{
+        oTarget["on"+sEvtType] = fnHandle;
+    }
+}
+
+//53.原生javascript跨浏览器删除事件
+function addEvt(oTarget,sEvtType,fnHandle){
+    if(!oTarget){return;}
+    if(oTarget.addEventListener){
+        oTarget.addEventListener(sEvtType,fnHandle,false);
+    }else if(oTarget.attachEvent){
+        oTarget.attachEvent("on"+sEvtType,fnHandle);
+    }else{
+        oTarget["on"+sEvtType] = null;
+    }
+}
+
+//54.原生javascript去掉url前缀
+function removeUrlPrefix(a){
+    a= a.replace(/:/g,".").replace(/／/g,"/");
+    while(trim(a).toLocaleLowerCase().indexOf("http://")==0){
+        a = trim(a.replace(/http:\/\//i,""));
+    }
+    return a;
+}
+
+//55.原生javascript随机时间戳
+function uniqueId(){
+    var a = Math.random,b=parseInt;
+    return Number(new Date()).toString()+b(10*a())+b(10*a())+b(10*a());
+}
+//56.原生javascript全角半角转换，icase:0全到半，1 半到全，其他不转化
+function chgCase(sStr,iCase){
+    if(typeof sStr != "string" || sStr.length <= 0 || !(iCase === 0 || iCase == 1)){
+        return sStr;
+    }
+    var i,oRs=[],iCode;
+    if(iCase){/*半->全*/
+        for(i=0; i<sStr.length;i+=1){
+            iCode = sStr.charCodeAt(i);
+            if(iCode == 32){
+                iCode = 12288;
+            }else if(iCode < 127){
+                iCode += 65248;
+            }
+            oRs.push(String.fromCharCode(iCode));
+        }
+    }else{/*全->半*/
+        for(i=0; i<sStr.length;i+=1){
+            iCode = sStr.charCodeAt(i);
+            if(iCode == 12288){
+                iCode = 32;
+            }else if(iCode > 65280 && iCode < 65375){
+                iCode -= 65248;
+            }
+            oRs.push(String.fromCharCode(iCode));
+        }
+    }
+    return oRs.join("");
+}
+
+//57.原生加javascript确认是否键盘有效输入值
+function checkKey(iKey){
+    if(iKey == 32 || iKey == 229){return true;}/*空格和异常*/
+    if(iKey>47 && iKey < 58){return true;}/*数字*/
+    if(iKey>64 && iKey < 91){return true;}/*字母*/
+    if(iKey>95 && iKey < 108){return true;}/*数字键盘1*/
+    if(iKey>108 && iKey < 112){return true;}/*数字键盘2*/
+    if(iKey>185 && iKey < 193){return true;}/*符号1*/
+    if(iKey>218 && iKey < 223){return true;}/*符号2*/
+    return false;
+}
+
+//58.原生javascript获取网页被卷去的位置
+function getScrollXY(){
+    return document.body.scrollTop ?{
+        x:document.body.scrollLeft,
+        y:document.body.scrollTop
+    }:{
+        x:document.documentElement.scrollLeft,
+        y:document.documentElement.scrollTop
+    }
+}
+
+//59.原生JavaScript另一种正则日期格式化函数+调用方法
+Date.prototype.format = function(format){ //author: meizz
+    var o = {
+        "M+" : this.getMonth()+1, //month
+        "d+" : this.getDate(),    //day
+        "h+" : this.getHours(),   //hour
+        "m+" : this.getMinutes(), //minute
+        "s+" : this.getSeconds(), //second
+        "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+        "S" : this.getMilliseconds() //millisecond
+    }
+    if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+        (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    for(var k in o)if(new RegExp("("+ k +")").test(format))
+        format = format.replace(RegExp.$1,
+            RegExp.$1.length==1 ? o[k] :
+                ("00"+ o[k]).substr((""+ o[k]).length));
+    return format;
+}
+alert(new Date().format("yyyy-MM-dd hh:mm:ss"));
+
+//60.原生JavaScript时间个性化输出功能
+/*
+ 1、< 60s, 显示为“刚刚”
+ 2、>= 1min && < 60 min, 显示与当前时间差“XX分钟前”
+ 3、>= 60min && < 1day, 显示与当前时间差“今天 XX:XX”
+ 4、>= 1day && < 1year, 显示日期“XX月XX日 XX:XX”
+ 5、>= 1year, 显示具体日期“XXXX年XX月XX日 XX:XX”
+ */
+function timeFormat(time){
+    var date = new Date(time)
+        , curDate = new Date()
+        , year = date.getFullYear()
+        , month = date.getMonth() + 1
+        , day = date.getDate()
+        , hour = date.getHours()
+        , minute = date.getMinutes()
+        , curYear = curDate.getFullYear()
+        , curHour = curDate.getHours()
+        , timeStr;
+
+    if(year < curYear){
+        timeStr = year +'年'+ month +'月'+ day +'日 '+ hour +':'+ minute;
+    }else{
+        var pastTime = curDate - date
+            , pastH = pastTime/3600000;
+
+        if(pastH > curHour){
+            timeStr = month +'月'+ day +'日 '+ hour +':'+ minute;
+        }else if(pastH >= 1){
+            timeStr = '今天 ' + hour +':'+ minute +'分';
+        }else{
+            var pastM = curDate.getMinutes() - minute;
+            if(pastM > 1){
+                timeStr = pastM +'分钟前';
+            }else{
+                timeStr = '刚刚';
+            }
+        }
+    }
+    return timeStr;
+}
+
+//61.原生javascript解决offsetX兼容性问题
+//针对火狐不支持offsetX/Y
+// 针对火狐不支持offsetX/Y
+function getOffset(e){
+    var target = e.target, // 当前触发的目标对象
+        eventCoord,
+        pageCoord,
+        offsetCoord;
+
+    // 计算当前触发元素到文档的距离
+    pageCoord = getPageCoord(target);
+
+    // 计算光标到文档的距离
+    eventCoord = {
+        X : window.pageXOffset + e.clientX,
+        Y : window.pageYOffset + e.clientY
+    };
+
+    // 相减获取光标到第一个定位的父元素的坐标
+    offsetCoord = {
+        X : eventCoord.X - pageCoord.X,
+        Y : eventCoord.Y - pageCoord.Y
+    };
+    return offsetCoord;
+}
+
+function getPageCoord(element){
+    var coord = { X : 0, Y : 0 };
+    // 计算从当前触发元素到根节点为止，
+    // 各级 offsetParent 元素的 offsetLeft 或 offsetTop 值之和
+    while (element){
+        coord.X += element.offsetLeft;
+        coord.Y += element.offsetTop;
+        element = element.offsetParent;
+    }
+    return coord;
+}
+
+//62.原生javascript常用的正则表达式
+/*
+//正整数
+/^[0-9]*[1-9][0-9]*$/;
+//负整数
+/^-[0-9]*[1-9][0-9]*$/;
+//正浮点数
+/^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/;
+//负浮点数
+/^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/;
+//浮点数
+/^(-?\d+)(\.\d+)?$/;
+//email地址
+/^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+//url地址
+/^[a-zA-z]+://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\S*)?$/;
+//年/月/日（年-月-日、年.月.日）
+/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;
+//匹配中文字符
+/[\u4e00-\u9fa5]/;
+//匹配帐号是否合法(字母开头，允许5-10字节，允许字母数字下划线)
+/^[a-zA-Z][a-zA-Z0-9_]{4,9}$/;
+//匹配空白行的正则表达式
+/\n\s*\r/;
+//匹配中国邮政编码
+/[1-9]\d{5}(?!\d)/;
+//匹配身份证
+/\d{15}|\d{18}/;
+//匹配国内电话号码
+/(\d{3}-|\d{4}-)?(\d{8}|\d{7})?/;
+//匹配IP地址
+/((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)/;
+//匹配首尾空白字符的正则表达式
+/^\s*|\s*$/;
+//匹配HTML标记的正则表达式
+< (\S*?)[^>]*>.*?|< .*? />;
+*/
+
+//63.原生javascript实现返回顶部的通用方法
+//ceil() 方法执行的是向上取整计算,它返回的是大于或等于函数参数,并且与之最接近的整数。
+function backTop(btnId) {
+    var btn = document.getElementById(btnId);
+    var d = document.documentElement;
+    var b = document.body;
+    window.onscroll = set;
+    btn.style.display = "none";
+    btn.onclick = function() {
+        btn.style.display = "none";
+        window.onscroll = null;
+        this.timer = setInterval(function() {
+                d.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
+                b.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
+                if ((d.scrollTop + b.scrollTop) == 0) clearInterval(btn.timer, window.onscroll = set);
+            },
+            10);
+    };
+    function set() {
+        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block': "none"
+    }
+};
+backTop('goTop');
+
+//64.原生javascript获取url中的GET参数值
+// 用法：如果地址是 test.htm?t1=1&t2=2&t3=3, 那么能取得：GET["t1"], GET["t2"], GET["t3"]
+function get_get(){
+    querystr = window.location.href.split('?');
+    if(querystr[1]){
+        GETs = querystr[1].split("&");
+        GET = new Array();
+        for(var i=0;i<GETs.length;i++){
+            tmp_arr = GETs[i].split("=");
+            key = tmp_arr[0];
+            GET[key] = tmp_arr[1]
+        }
+    }
+    return querystr[1];
+}
+
+//66.原生javascript实现全部取消选择通用方法
+function checkall(form, prefix, checkall) {
+    var checkall = checkall ? checkall : 'chkall';
+    for(var i = 0; i < form.elements.length; i++) {
+        var e = form.elements[i];
+        if(e.type=="checkbox"){
+            e.checked = form.elements[checkall].checked;
+        }
+    }
+}
+
+//67.原生javascript实现打开一个窗体通用方法
+function openWindow(url,windowName,width,height){
+    var x = parseInt(screen.width / 2.0) - (width / 2.0);
+    var y = parseInt(screen.height / 2.0) - (height / 2.0);
+    var isMSIE= (navigator.appName == "Microsoft Internet Explorer");
+    if (isMSIE) {
+        var p = "resizable=1,location=no,scrollbars=no,width=";
+        p = p+width;
+        p = p+",height=";
+        p = p+height;
+        p = p+",left=";
+        p = p+x;
+        p = p+",top=";
+        p = p+y;
+        retval = window.open(url, windowName, p);
+    } else {
+        var win = window.open(url, "ZyiisPopup", "top=" + y + ",left=" + x + ",scrollbars=" + scrollbars + ",dialog=yes,modal=yes,width=" + width + ",height=" + height + ",resizable=no" );
+        eval("try { win.resizeTo(width, height); } catch(e) { }");
+        win.focus();
+    }
+}
+//68.原生javascript判断是否为客户端设备
+function client(o){
+    var b = navigator.userAgent.toLowerCase();
+    var t = false;
+    if (o == 'isOP'){
+        t = b.indexOf('opera') > -1;
+    }
+    if (o == 'isIE'){
+        t = b.indexOf('msie') > -1;
+    }
+    if (o == 'isFF'){
+        t = b.indexOf('firefox') > -1;
+    }
+    return t;
+}
+
+//69.原生javascript判断是否为客户端设备
+function client(o){
+    var b = navigator.userAgent.toLowerCase();
+    var t = false;
+    if (o == 'isOP'){
+        t = b.indexOf('opera') > -1;
+    }
+    if (o == 'isIE'){
+        t = b.indexOf('msie') > -1;
+    }
+    if (o == 'isFF'){
+        t = b.indexOf('firefox') > -1;
+    }
+    return t;
+}
+
+//69.原生JavaScript获取单选按钮的值
+function get_radio_value(field){
+    if(field&&field.length){
+        for(var i=0;i<field.length;i++){
+            if(field[i].checked){
+                return field[i].value;
+            }
+        }
+    }else {
+        return ;
+    }
+}
+/*checked 属性可设置或返回某个单选按钮是否被选中。
+语法:
+radioObject.checked=true|false
+*/
+
+
+//70.原生javascript获取复选框的值
+function get_checkbox_value(field){
+    if(field&&field.length){
+        for(var i=0;i<field.length;i++){
+            if(field[i].checked && !field[i].disabled){
+                return field[i].value;
+            }
+        }
+    }else {
+        return;
+    }
+}
