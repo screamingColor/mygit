@@ -2,7 +2,14 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var user = require('../models/user').user;
-mongoose.connect('mongodb://localhost/hello-world');
+mongoose.connect('mongodb://localhost/hello');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    // we're connected!
+});
+
+
 
 /* GET home page. */
 router.get('/', function(req, res) {

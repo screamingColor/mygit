@@ -7,4 +7,4 @@ var useSchema = new Schema({
     userid:String,
     password:String
 });
-exports.user = mongoose.model('users',useSchema);
+exports.user = mongoose.db('users',useSchema);
