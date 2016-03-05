@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-2.1.1.min.js"></script>
+<style>
+.unliststyle{
+	list-style:none;
+	margin:0;
+	padding:0;
+	display:inline;
+	}
+.liststyle{
+	outline:#999 1px dashed;
+	padding-left:30px;
+	display:inline;
+
+	}
+</style>
+</head>
+
+<body>
+<ul class="menu">
+
+<li>book
+<ul>
+<li>123</li>
+<li>a</li>
+<li>b</li>
+</ul>
+</li>
+</ul>
+
+<script>
+$(document).ready(function(){
+	$('ul').addClass('unliststyle');
+	$('ul li ul li').addClass('liststyle')
+	});
+</script>
+</body>
+</html>
