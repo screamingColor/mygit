@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>closure</title>
+</head>
+<body>
+<div id="div1" style="width: 40px;padding=5px;background-color: #ddd;">aaa</div><br>
+<div id="div2" style="width: 40px; padding=5px;background-color: #ddd;">bbb</div><br>	
+<div id="div3" style="width: 40px; padding=5px;background-color: #ddd;">ccc</div>
+<script>
+for (var i = 1; i <4; i++) {
+	!function(i){
+		document.getElementById('div'+i).addEventListener('click',function(){
+			alert(i);
+		});
+	}(i);
+}
+</script>
+</body>
+</html>
