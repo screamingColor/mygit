@@ -5,7 +5,7 @@
         text: '货源信息（吨）',
         x:'center',
         textStyle:{
-        fontSize: 10,
+        fontSize: 14,
         fontWeight: 'bolder',
         color: '#000'
         }             
@@ -35,6 +35,11 @@
             type:'pie',
             radius : '42%',
             center: ['50%', '45%'],
+            // for funnel
+            x: '20%',
+            width: '40%',
+            funnelAlign: 'right',
+            max: 1548,
             data:[
                 {value:1000, name:'西湖区'},
                 {value:300, name:'东湖区'},
@@ -51,7 +56,7 @@
 })();
 
 
-/*---------------------*/
+/*--------------------------------------------------------------*/
 (function setpie2(){
     var chartPie2 = echarts.init(document.getElementById('pie2')); 
     var option = {
@@ -59,7 +64,7 @@
         text: '车辆分布（辆）',
         x:'center',
         textStyle:{
-        fontSize: 10,
+        fontSize: 14,
         fontWeight: 'bolder',
         color: '#000'
         }             
@@ -122,36 +127,43 @@
     chartPie2.setOption(option);
 })();
 
-/*--------------------------------*/
+/*---------------------------------------------------------------------*/
 
 (function setbar1(){
     var chartBar1 = echarts.init(document.getElementById('bar1')); 
     var option = {
-    grid: {y: 40, y2:50, x2:0,x:10,borderWidth:0,backgroundColor:'rgba(0,0,0,1)'},
+    grid: {y: 40, y2:50, x2:10,x:55,borderWidth:0,backgroundColor:'rgba(194,13,49,0.1)'},
     title : {
         text: '仓储面积（平方米）',
         x:'center',
         textStyle:{
-            fontSize: 10,
+            fontSize: 14,
             fontWeight: 'bolder',
             color: '#000'
         }             
     },
      
-    tooltip : {
-        trigger: 'axis'
+        tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow',      // 默认为直线，可选为：'line' | 'shadow'
+             shadowStyle: {
+        color: 'rgba(150,150,150,0.3)',
+        width: 'auto',
+        type: 'default'
+    }
+        },
+        formatter: function (params) {
+            var tar = params[0];
+            return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+        }
     },
-    legend: {
-        x:'left',
-        y:'bottom',
-        data:['仓储面积']
-    },
- 
-    calculable : true,
+   
     xAxis : [
         {
             type : 'category',
-
+            splitLine: {show:false},
+            axisLabel :{formatter:'{value}',interval:0,rotate:90},
             data : ['西湖区','东湖区','红谷滩','新建区','青山湖','高新区']
         }
     ],
@@ -161,31 +173,138 @@
         }
     ],
     series : [
-         {
-           
-            type:'bar',
-            stack: 'sum',
-            barCategoryGap: '50%',
+      
+        {
+            name:'仓储面积',
+            type:'bar',         
             itemStyle: {
                 normal: {
-                    color: 'tomato',
-                    barBorderColor: 'tomato',
-                    barBorderWidth: 6,
-                    barBorderRadius:0,
+                    color: 'rgba(18,53,85,0.8)',
                     label : {
-                        show: true, position: 'insideTop'
+                        show: false
                     }
                 }
             },
-             
+            
             data:[100000, 22000, 23000,90000, 60000, 220000]
-        },
-        
-        
-           
-        
+        }
     ]
 };
                     
     chartBar1.setOption(option);
+})();
+
+/*---------------------------------------------------------------------------*/
+(function setbar2(){
+    var chartBar2 = echarts.init(document.getElementById('bar2')); 
+    var option = {
+    grid: {y: 40, y2:50, x2:20,x:55,borderWidth:0,backgroundColor:'rgba(18,53,85,0.1)'},
+    title : {
+        text: '物流企业分布',
+        x:'center',
+        textStyle:{
+            fontSize: 14,
+            fontWeight: 'bolder',
+            color: '#000'
+        }             
+    },
+     
+        tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        formatter: function (params) {
+            var tar = params[0];
+            return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+        }
+    },
+   
+    yAxis : [
+        {
+            type : 'category',
+            splitLine: {show:false},
+            data : ['安义','西湖','青山湖','高新','新建','红谷滩','南昌县']
+        }
+    ],
+    xAxis : [
+        {   axisLabel :{formatter:'{value}',interval:0,rotate:90},
+            type : 'value'
+        }
+    ],
+    series : [
+      
+        {
+            name:'物流企业分布',
+            type:'bar',         
+            itemStyle: {
+                normal: {
+                    color: 'rgba(194,13,49,0.8)',
+                    label : {
+                        show: false
+                    }
+                }
+            },
+            
+            data:[100, 250, 200,120, 130, 500,310,205]
+        }
+    ]
+};
+                    
+    chartBar2.setOption(option);
+})();
+/*-------------------------------------------------------------------------*/
+(function setbar2(){
+    var chartBar2 = echarts.init(document.getElementById('line1')); 
+    var option = {
+        grid: {y: 40, y2:50, x2:20,x:55,borderWidth:0},
+     title : {
+        text: '2015年公路运量',
+        x:'center',
+        textStyle:{
+            fontSize: 14,
+            fontWeight: 'bolder',
+            color: '#000'
+        }             
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+         orient : 'horizontal',
+        x : 'center',
+        y : 'bottom',
+        data:['运量']
+
+    },
+   
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['1月','2月','3月','4月','5月']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : {
+                formatter: '{value}'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'运量',
+            type:'line',
+            data:[100000, 150000, 160000, 140000, 130000],
+          
+          
+        }
+       
+    ]
+};
+                    
+    chartBar2.setOption(option);
 })();
